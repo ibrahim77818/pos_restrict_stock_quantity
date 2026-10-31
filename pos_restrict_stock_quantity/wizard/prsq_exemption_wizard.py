@@ -67,7 +67,7 @@ class PrsqExemptionWizard(models.TransientModel):
         if self.categ_ids:
             domain.append(('categ_id', 'child_of', self.categ_ids.ids))
         if self.pos_categ_ids:
-            domain.append(('pos_categ_id', 'child_of', self.pos_categ_ids.ids))
+            domain.append(('pos_categ_ids', 'child_of', self.pos_categ_ids.ids))
         if self.tag_ids:
             domain.append(('product_tag_ids', 'in', self.tag_ids.ids))
         exempt_ids = self.config_id.prsq_exempt_product_ids.ids

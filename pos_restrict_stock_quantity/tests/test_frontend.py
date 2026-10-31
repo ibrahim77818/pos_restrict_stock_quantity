@@ -49,9 +49,9 @@ class TestPrsqUi(TestPointOfSaleHttpCommon):
 
     def test_01_block_mode_tour(self):
         self.main_pos_config.prsq_restriction_mode = 'block'
-        self.main_pos_config.open_ui()
+        self.main_pos_config.with_user(self.pos_user).open_ui()
         self.start_tour('/pos/ui?config_id=%d' % self.main_pos_config.id,
-                        'PosRestrictStockBlockTour', login='accountman')
+                        'PosRestrictStockBlockTour', login='pos_user')
         order = self.env['pos.order'].search([('session_id', '=', self.main_pos_config.current_session_id.id)])
         self.assertEqual(len(order), 1)
         quantities = {line.product_id: line.qty for line in order.lines}
@@ -61,6 +61,6 @@ class TestPrsqUi(TestPointOfSaleHttpCommon):
 
     def test_02_warn_mode_tour(self):
         self.main_pos_config.prsq_restriction_mode = 'warn'
-        self.main_pos_config.open_ui()
+        self.main_pos_config.with_user(self.pos_user).open_ui()
         self.start_tour('/pos/ui?config_id=%d' % self.main_pos_config.id,
-                        'PosRestrictStockWarnTour', login='accountman')
+                        'PosRestrictStockWarnTour', login='pos_user')
