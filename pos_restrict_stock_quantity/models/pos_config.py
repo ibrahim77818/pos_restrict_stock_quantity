@@ -38,7 +38,7 @@ class PosConfig(models.Model):
     prsq_exempt_product_ids = fields.Many2many(
         'product.product', 'pos_config_prsq_exempt_product_rel',
         'config_id', 'product_id', string='Exempted Products',
-        domain="[('type', '=', 'product')]",
+        domain="[('is_storable', '=', True)]",
         help='These products can always be sold, whatever their stock level.')
     prsq_exempt_count = fields.Integer(
         string='Exempted Products Count', compute='_compute_prsq_exempt_count')
@@ -160,9 +160,9 @@ class PosConfig(models.Model):
             ('order_id.picking_ids', '=', False),
             ('order_id.config_id.picking_type_id.default_location_src_id', 'child_of', location.id),
         ]
-        groups = self.env['pos.order.line'].sudo().read_group(
-            domain, ['qty:sum'], ['product_id'], lazy=False)
-        return {group['product_id'][0]: group['qty'] for group in groups}
+        groups = self.env['pos.order.line'].sudo()._read_group(
+            domain, ['product_id'], ['qty:sum'])
+        return {product.id: qty for product, qty in groups}
 
     def _prsq_compute_stock_map(self, product_ids):
         """Return ``{product_id: [on_hand, forecasted]}`` for the storable
@@ -178,7 +178,7 @@ class PosConfig(models.Model):
         digits = self.env['decimal.precision'].precision_get('Product Unit of Measure')
         result = {}
         for batch in split_every(STOCK_BATCH_SIZE, list(product_ids)):
-            storable = Product.search([('id', 'in', list(batch)), ('type', '=', 'product')])
+            storable = Product.search([('id', 'in', list(batch)), ('is_storable', '=', True)])
             if not storable:
                 continue
             quantities = storable._compute_quantities_dict(None, None, None)
@@ -189,6 +189,21 @@ class PosConfig(models.Model):
                     float_round(qty['qty_available'] - sold, precision_digits=digits),
                     float_round(qty['virtual_available'] - sold, precision_digits=digits),
                 ]
+        return result
+
+    def _prsq_frontend_stock_map(self, product_ids):
+        """JSON friendly map for the POS: ``{"id": [on_hand, forecast]}`` for
+        storable products and ``{"id": False}`` for untracked ones, so the
+        POS never asks twice for a consumable."""
+        self.ensure_one()
+        stock_map = self._prsq_compute_stock_map(product_ids)
+        return {str(pid): stock_map.get(pid, False) for pid in product_ids}
+
+    @api.model
+    def _load_pos_data_read(self, records, config):
+        result = super()._load_pos_data_read(records, config)
+        for config_vals in result:
+            config_vals['_prsq_settings'] = self.browse(config_vals['id']).sudo()._prsq_get_frontend_settings()
         return result
 
     def _prsq_get_frontend_settings(self):

@@ -1,0 +1,92 @@
+// POS Restrict Stock Quantity - product card badges (Odoo 18)
+$prsq-green: #1f8f4e;
+$prsq-red: #d6333b;
+$prsq-blue: #2a6fdb;
+$prsq-grey: #6c757d;
+
+.pos .product {
+    .prsq-badges {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        z-index: 2;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3px;
+        max-width: calc(100% - 36px); // keep the info triangle (top right) free
+        pointer-events: none;
+    }
+
+    .prsq-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        min-width: 22px;
+        padding: 1px 7px;
+        border-radius: 10px;
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 16px;
+        color: #fff;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+        white-space: nowrap;
+
+        &.prsq-in { background-color: $prsq-green; }
+        &.prsq-out { background-color: $prsq-red; }
+        &.prsq-badge-forecast { background-color: $prsq-blue; }
+        &.prsq-badge-exempt { background-color: $prsq-grey; min-width: 18px; padding: 1px 5px; }
+
+        .fa { font-size: 10px; }
+    }
+
+    .prsq-ribbon {
+        position: absolute;
+        top: 34%;
+        left: 0;
+        right: 0;
+        z-index: 2;
+        padding: 2px 0;
+        text-align: center;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: #fff;
+        background-color: rgba($prsq-red, 0.88);
+        pointer-events: none;
+    }
+
+    &.prsq-blocked {
+        .product-img img,
+        .product-name {
+            opacity: 0.45;
+        }
+    }
+
+    // Cards without picture: keep the name below the badges and show the
+    // "out of stock" strip at the bottom instead of over the name.
+    &.prsq-tracked:not(:has(.product-img)) {
+        .product-content {
+            padding-top: 22px;
+        }
+        .prsq-ribbon {
+            top: auto;
+            bottom: 0;
+        }
+    }
+
+    &.prsq-exempt .prsq-badge-onhand {
+        outline: 1px dashed rgba(255, 255, 255, 0.8);
+        outline-offset: -3px;
+    }
+}
+
+// Note: in Arabic (RTL) Odoo runs the bundle through rtlcss, which mirrors
+// left/right automatically, so no RTL-specific rule is needed here.
+
+.prsq-refresh-button[disabled] {
+    opacity: 0.7;
+    pointer-events: none;
+}
+

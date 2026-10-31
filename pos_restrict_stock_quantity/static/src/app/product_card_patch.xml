@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="pos_restrict_stock_quantity.ProductCard" t-inherit="point_of_sale.ProductCard" t-inherit-mode="extension">
+        <xpath expr="//article" position="attributes">
+            <attribute name="t-attf-class" add="{{props.prsqInfo?props.prsqInfo.cardClass:''}}" separator=" "/>
+        </xpath>
+        <xpath expr="//article" position="inside">
+            <t t-set="prsq" t-value="props.prsqInfo"/>
+            <div t-if="prsq and (prsq.showOnHand or prsq.showForecast)" class="prsq-badges">
+                <span t-if="prsq.showOnHand"
+                      t-attf-class="prsq-badge prsq-badge-onhand #{prsq.isIn ? 'prsq-in' : 'prsq-out'}"
+                      t-att-data-qty="prsq.onHand"
+                      title="On Hand">
+                    <t t-esc="prsq.onHandTxt"/>
+                </span>
+                <span t-if="prsq.showForecast"
+                      class="prsq-badge prsq-badge-forecast"
+                      t-att-data-qty="prsq.forecast"
+                      title="Forecasted">
+                    <i class="fa fa-clock-o" role="img" aria-label="Forecasted"/>
+                    <t t-esc="prsq.forecastTxt"/>
+                </span>
+                <span t-if="prsq.showExempt"
+                      class="prsq-badge prsq-badge-exempt" title="Exempted from the stock restriction">
+                    <i class="fa fa-unlock" role="img" aria-label="Exempted"/>
+                </span>
+            </div>
+            <div t-if="prsq and prsq.blocked" class="prsq-ribbon">Out of stock</div>
+        </xpath>
+    </t>
+
+    <t t-name="pos_restrict_stock_quantity.ProductScreen" t-inherit="point_of_sale.ProductScreen" t-inherit-mode="extension">
+        <xpath expr="//ProductCard" position="attributes">
+            <attribute name="prsqInfo">pos.prsqGetCardInfo(product)</attribute>
+        </xpath>
+    </t>
+
+</templates>

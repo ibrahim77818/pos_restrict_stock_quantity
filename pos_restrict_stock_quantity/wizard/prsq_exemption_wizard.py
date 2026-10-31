@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import _, api, fields, models
-from odoo.osv import expression
+from odoo.fields import Domain
 
 
 class PrsqExemptionWizard(models.TransientModel):
@@ -54,20 +54,22 @@ class PrsqExemptionWizard(models.TransientModel):
     def _get_product_domain(self):
         self.ensure_one()
         domain = [
-            ('type', '=', 'product'),
+            ('is_storable', '=', True),
             ('company_id', 'in', (self.config_id.company_id.id, False)),
         ]
         if self.available_in_pos_only:
             domain.append(('available_in_pos', '=', True))
         if self.search_text:
             text = self.search_text.strip()
-            domain = expression.AND([domain, [
-                '|', '|', ('name', 'ilike', text), ('default_code', 'ilike', text),
-                ('barcode', 'ilike', text)]])
+            domain.append(
+                Domain('name', 'ilike', text)
+                | Domain('default_code', 'ilike', text)
+                | Domain('barcode', 'ilike', text)
+            )
         if self.categ_ids:
             domain.append(('categ_id', 'child_of', self.categ_ids.ids))
         if self.pos_categ_ids:
-            domain.append(('pos_categ_id', 'child_of', self.pos_categ_ids.ids))
+            domain.append(('pos_categ_ids', 'child_of', self.pos_categ_ids.ids))
         if self.tag_ids:
             domain.append(('product_tag_ids', 'in', self.tag_ids.ids))
         exempt_ids = self.config_id.prsq_exempt_product_ids.ids
@@ -75,7 +77,7 @@ class PrsqExemptionWizard(models.TransientModel):
             domain.append(('id', 'in', exempt_ids))
         elif self.exemption_state == 'not_exempt' and exempt_ids:
             domain.append(('id', 'not in', exempt_ids))
-        return domain
+        return Domain.AND(Domain(*leaf) if isinstance(leaf, tuple) else leaf for leaf in domain)
 
     def _get_matching_products(self):
         """Return (products, stock_map) matching every filter, stock included."""

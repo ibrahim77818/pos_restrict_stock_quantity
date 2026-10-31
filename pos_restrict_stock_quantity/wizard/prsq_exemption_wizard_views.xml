@@ -8,15 +8,15 @@
             <form string="Stock Restriction Exemptions" class="o_prsq_exemption_wizard">
                 <field name="searched" invisible="1"/>
                 <field name="company_id" invisible="1"/>
-                <div class="alert alert-info mb-2" role="status">
+                <!-- Odoo 19 renders fields as blocks: a flex row keeps the sentence on one line -->
+                <div class="alert alert-info mb-2 d-flex flex-wrap align-items-baseline gap-1" role="status">
                     <i class="fa fa-info-circle me-1" title="Info"/>
-                    Exempted products can always be sold in
-                    <strong><field name="config_id" readonly="1" class="d-inline" options="{'no_open': True}"/></strong>,
-                    even when their stock is insufficient.
-                    Currently exempted: <strong><field name="exempt_count" class="d-inline"/></strong>
-                    <span class="text-muted ms-2">
-                        (stock location: <field name="stock_location_id" class="d-inline" options="{'no_open': True}"/>)
-                    </span>
+                    <span>Exempted products can always be sold in</span>
+                    <field name="config_id" readonly="1" class="fw-bold" options="{'no_open': True}"/>
+                    <span>even when their stock is insufficient. Currently exempted:</span>
+                    <field name="exempt_count" class="fw-bold"/>
+                    <span class="text-muted ms-2">Stock location:</span>
+                    <field name="stock_location_id" class="text-muted" options="{'no_open': True}"/>
                 </div>
                 <group string="Filters">
                     <group>
@@ -45,7 +45,7 @@
                             string="Un-exempt All Matching" class="btn-secondary" icon="fa-lock"
                             confirm="Remove the exemption of every product matching the filters?"/>
                 </div>
-                <div attrs="{'invisible': [('searched', '=', False)]}">
+                <div invisible="not searched">
                     <div class="d-flex flex-wrap align-items-center gap-1 mb-2">
                         <span class="me-2">
                             <strong><field name="result_count" class="d-inline"/></strong> matching product(s),
@@ -60,13 +60,13 @@
                         <span class="flex-grow-1"/>
                         <button name="action_exempt_selected" type="object" string="Exempt Selected"
                                 class="btn-primary" icon="fa-unlock"
-                                attrs="{'invisible': [('selected_count', '=', 0)]}"/>
+                                invisible="selected_count == 0"/>
                         <button name="action_unexempt_selected" type="object" string="Remove Exemption"
                                 class="btn-secondary" icon="fa-lock"
-                                attrs="{'invisible': [('selected_count', '=', 0)]}"/>
+                                invisible="selected_count == 0"/>
                     </div>
                     <field name="line_ids" nolabel="1">
-                        <tree editable="bottom" create="0" delete="0"
+                        <list editable="bottom" create="0" delete="0" limit="1000"
                               decoration-muted="is_exempt"
                               decoration-danger="not is_exempt and on_hand &lt;= 0"
                               decoration-success="not is_exempt and on_hand &gt; 0">
@@ -78,7 +78,7 @@
                             <field name="forecast" optional="show"/>
                             <field name="uom_id" optional="hide" groups="uom.group_uom"/>
                             <field name="is_exempt" widget="boolean_toggle" readonly="1"/>
-                        </tree>
+                        </list>
                     </field>
                 </div>
                 <footer>
