@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="prsq_exemption_wizard_view_form" model="ir.ui.view">
+        <field name="name">prsq.exemption.wizard.form</field>
+        <field name="model">prsq.exemption.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Stock Restriction Exemptions" class="o_prsq_exemption_wizard">
+                <field name="searched" invisible="1"/>
+                <field name="company_id" invisible="1"/>
+                <div class="alert alert-info mb-2" role="status">
+                    <i class="fa fa-info-circle me-1" title="Info"/>
+                    Exempted products can always be sold in
+                    <strong><field name="config_id" readonly="1" class="d-inline" options="{'no_open': True}"/></strong>,
+                    even when their stock is insufficient.
+                    Currently exempted: <strong><field name="exempt_count" class="d-inline"/></strong>
+                    <span class="text-muted ms-2">
+                        (stock location: <field name="stock_location_id" class="d-inline" options="{'no_open': True}"/>)
+                    </span>
+                </div>
+                <group string="Filters">
+                    <group>
+                        <field name="search_text" placeholder="e.g. Coca, FURN_001, 5449..."/>
+                        <field name="categ_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                        <field name="pos_categ_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                        <field name="tag_ids" widget="many2many_tags" options="{'no_create': True, 'color_field': 'color'}"/>
+                    </group>
+                    <group>
+                        <field name="stock_state"/>
+                        <field name="exemption_state"/>
+                        <field name="available_in_pos_only"/>
+                        <field name="limit"/>
+                    </group>
+                </group>
+                <div class="d-flex flex-wrap gap-1 mb-3">
+                    <button name="action_search" type="object" string="Search Products"
+                            class="btn-primary" icon="fa-search"/>
+                    <button name="action_reset_filters" type="object" string="Reset"
+                            class="btn-secondary" icon="fa-eraser"/>
+                    <span class="flex-grow-1"/>
+                    <button name="action_exempt_all_matching" type="object"
+                            string="Exempt All Matching" class="btn-secondary" icon="fa-unlock"
+                            confirm="Exempt every product matching the filters (not only the displayed lines)?"/>
+                    <button name="action_unexempt_all_matching" type="object"
+                            string="Un-exempt All Matching" class="btn-secondary" icon="fa-lock"
+                            confirm="Remove the exemption of every product matching the filters?"/>
+                </div>
+                <div attrs="{'invisible': [('searched', '=', False)]}">
+                    <div class="d-flex flex-wrap align-items-center gap-1 mb-2">
+                        <span class="me-2">
+                            <strong><field name="result_count" class="d-inline"/></strong> matching product(s),
+                            <strong><field name="selected_count" class="d-inline"/></strong> selected
+                        </span>
+                        <button name="action_select_all" type="object" string="Select All"
+                                class="btn-link" icon="fa-check-square-o"/>
+                        <button name="action_deselect_all" type="object" string="Deselect All"
+                                class="btn-link" icon="fa-square-o"/>
+                        <button name="action_invert_selection" type="object" string="Invert"
+                                class="btn-link" icon="fa-exchange"/>
+                        <span class="flex-grow-1"/>
+                        <button name="action_exempt_selected" type="object" string="Exempt Selected"
+                                class="btn-primary" icon="fa-unlock"
+                                attrs="{'invisible': [('selected_count', '=', 0)]}"/>
+                        <button name="action_unexempt_selected" type="object" string="Remove Exemption"
+                                class="btn-secondary" icon="fa-lock"
+                                attrs="{'invisible': [('selected_count', '=', 0)]}"/>
+                    </div>
+                    <field name="line_ids" nolabel="1">
+                        <tree editable="bottom" create="0" delete="0"
+                              decoration-muted="is_exempt"
+                              decoration-danger="not is_exempt and on_hand &lt;= 0"
+                              decoration-success="not is_exempt and on_hand &gt; 0">
+                            <field name="selected" nolabel="1" width="40px"/>
+                            <field name="product_id" options="{'no_open': True}"/>
+                            <field name="default_code" optional="show"/>
+                            <field name="categ_id" optional="show"/>
+                            <field name="on_hand" sum="On Hand"/>
+                            <field name="forecast" optional="show"/>
+                            <field name="uom_id" optional="hide" groups="uom.group_uom"/>
+                            <field name="is_exempt" widget="boolean_toggle" readonly="1"/>
+                        </tree>
+                    </field>
+                </div>
+                <footer>
+                    <button string="Done" class="btn-primary" special="cancel" data-hotkey="z"/>
+                    <button name="action_clear_all_exemptions" type="object" string="Clear All Exemptions"
+                            class="btn-secondary float-end" icon="fa-trash"
+                            confirm="Remove all product exemptions of this Point of Sale?"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

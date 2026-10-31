@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_config_settings_view_form_inherit_prsq" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.prsq</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="point_of_sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='pos_inventory_section']" position="after">
+                <h2 id="prsq_section_title">Stock Visibility &amp; Restriction</h2>
+                <div class="row mt16 o_settings_container" id="prsq_settings_section">
+
+                    <div class="col-12 col-lg-6 o_setting_box" id="prsq_show_stock_setting">
+                        <div class="o_setting_left_pane">
+                            <field name="pos_prsq_show_stock"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="pos_prsq_show_stock" string="Stock Badges on Products"/>
+                            <div class="text-muted">
+                                Show the on-hand quantity on product cards:
+                                <span class="badge rounded-pill text-bg-success">in stock</span>
+                                <span class="badge rounded-pill text-bg-danger">out of stock</span>
+                            </div>
+                            <div class="content-group mt8">
+                                <field name="pos_prsq_show_forecast" class="oe_inline"/>
+                                <label for="pos_prsq_show_forecast" class="o_light_label ms-1"
+                                       string="Also show the forecasted quantity"/>
+                                <span class="badge rounded-pill text-bg-primary ms-1">forecast</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6 o_setting_box" id="prsq_restrict_setting">
+                        <div class="o_setting_left_pane">
+                            <field name="pos_prsq_restrict_out_of_stock"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="pos_prsq_restrict_out_of_stock" string="Restrict Out-of-Stock Sales"/>
+                            <div class="text-muted">
+                                Cashiers cannot sell more than the available quantity of storable products
+                            </div>
+                            <div class="content-group mt16"
+                                 attrs="{'invisible': [('pos_prsq_restrict_out_of_stock', '=', False)]}">
+                                <div class="row">
+                                    <label for="pos_prsq_restriction_basis" string="Available Quantity"
+                                           class="col-lg-4 o_light_label"/>
+                                    <field name="pos_prsq_restriction_basis"
+                                           attrs="{'required': [('pos_prsq_restrict_out_of_stock', '=', True)]}"/>
+                                </div>
+                                <div class="row">
+                                    <label for="pos_prsq_restriction_mode" string="On Shortage"
+                                           class="col-lg-4 o_light_label"/>
+                                    <field name="pos_prsq_restriction_mode"
+                                           attrs="{'required': [('pos_prsq_restrict_out_of_stock', '=', True)]}"/>
+                                </div>
+                                <div class="mt8">
+                                    <button name="action_prsq_open_exemption_wizard" type="object"
+                                            class="btn-link p-0" icon="fa-unlock">
+                                        Manage Exempted Products
+                                    </button>
+                                    <span class="ms-1 badge rounded-pill text-bg-secondary">
+                                        <field name="pos_prsq_exempt_count"/>
+                                    </span>
+                                </div>
+                                <div class="mt8">
+                                    <field name="pos_prsq_exempt_product_ids" widget="many2many_tags"
+                                           options="{'no_create': True}"
+                                           placeholder="Exempted products..."/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6 o_setting_box" id="prsq_location_setting">
+                        <div class="o_setting_right_pane">
+                            <label for="pos_prsq_location_scope" string="Stock Source"/>
+                            <div class="text-muted">
+                                Location used to compute quantities for this POS
+                                (linked to its Operation Type and Warehouse)
+                            </div>
+                            <div class="content-group mt16">
+                                <field name="pos_prsq_location_scope" widget="radio"/>
+                                <div class="row" attrs="{'invisible': [('pos_prsq_location_scope', '!=', 'warehouse')]}">
+                                    <label for="pos_prsq_warehouse_id" string="Warehouse"
+                                           class="col-lg-4 o_light_label"/>
+                                    <field name="pos_prsq_warehouse_id" options="{'no_create': True}"
+                                           attrs="{'required': [('pos_prsq_location_scope', '=', 'warehouse')]}"/>
+                                </div>
+                                <div class="row" attrs="{'invisible': [('pos_prsq_location_scope', '!=', 'location')]}">
+                                    <label for="pos_prsq_location_id" string="Location"
+                                           class="col-lg-4 o_light_label"/>
+                                    <field name="pos_prsq_location_id" options="{'no_create': True}"
+                                           domain="[('usage', 'in', ('internal', 'view')), ('company_id', 'in', (company_id, False))]"
+                                           attrs="{'required': [('pos_prsq_location_scope', '=', 'location')]}"/>
+                                </div>
+                                <div class="row">
+                                    <label for="pos_prsq_stock_location_id" string="Effective Location"
+                                           class="col-lg-4 o_light_label"/>
+                                    <field name="pos_prsq_stock_location_id" options="{'no_open': True}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-6 o_setting_box" id="prsq_refresh_setting">
+                        <div class="o_setting_right_pane">
+                            <label for="pos_prsq_refresh_interval" string="Stock Auto Refresh"/>
+                            <div class="text-muted">
+                                Quantities are embedded when the POS loads and refreshed after each synced order.
+                                Optionally reload them every N minutes (0 = off).
+                            </div>
+                            <div class="content-group mt8">
+                                <field name="pos_prsq_refresh_interval" class="oe_inline"/> minutes
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

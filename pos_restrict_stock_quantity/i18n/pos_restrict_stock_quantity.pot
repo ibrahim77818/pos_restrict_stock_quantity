@@ -1,0 +1,818 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* pos_restrict_stock_quantity
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-28 07:28+0000\n"
+"PO-Revision-Date: 2026-10-28 07:28+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: pos_restrict_stock_quantity
+#. odoo-javascript
+#: code:addons/pos_restrict_stock_quantity/static/src/js/models.js:0
+#, python-format
+msgid "\"%s\" is out of stock in %s."
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.prsq_exemption_wizard_view_form
+msgid "(stock location:"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.prsq_exemption_wizard_view_form
+msgid ""
+",\n"
+"                    even when their stock is insufficient.\n"
+"                    Currently exempted:"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.prsq_exemption_wizard_view_form
+msgid ""
+"<i class=\"fa fa-info-circle me-1\" title=\"Info\"/>\n"
+"                    Exempted products can always be sold in"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
+msgid "<span class=\"badge rounded-pill text-bg-primary ms-1\">forecast</span>"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields.selection,name:pos_restrict_stock_quantity.selection__prsq_exemption_wizard__exemption_state__all
+msgid "All Products"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields.selection,name:pos_restrict_stock_quantity.selection__prsq_exemption_wizard__exemption_state__exempt
+msgid "Already Exempted"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,help:pos_restrict_stock_quantity.field_pos_config__prsq_show_forecast
+#: model:ir.model.fields,help:pos_restrict_stock_quantity.field_res_config_settings__pos_prsq_show_forecast
+msgid "Also display a blue badge with the forecasted (virtual) quantity."
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
+msgid "Also show the forecasted quantity"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields.selection,name:pos_restrict_stock_quantity.selection__prsq_exemption_wizard__stock_state__all
+msgid "Any Stock Level"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_pos_config__prsq_refresh_interval
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_res_config_settings__pos_prsq_refresh_interval
+msgid "Auto Refresh (minutes)"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
+msgid "Available Quantity"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_pos_config__prsq_restriction_basis
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_res_config_settings__pos_prsq_restriction_basis
+msgid "Available Quantity Based On"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard__available_in_pos_only
+msgid "Available in POS only"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.pos_config_view_form_inherit_prsq
+msgid "Background stock refresh while the POS is open (0 = off)"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields.selection,name:pos_restrict_stock_quantity.selection__pos_config__prsq_restriction_mode__block
+msgid "Block the sale"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#. odoo-javascript
+#: code:addons/pos_restrict_stock_quantity/static/src/js/models.js:0
+#, python-format
+msgid "Cancel"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
+msgid ""
+"Cashiers cannot sell more than the available quantity of storable products"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,help:pos_restrict_stock_quantity.field_prsq_exemption_wizard__categ_ids
+#: model:ir.model.fields,help:pos_restrict_stock_quantity.field_prsq_exemption_wizard__pos_categ_ids
+msgid "Child categories are included."
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.prsq_exemption_wizard_view_form
+msgid "Clear All Exemptions"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard__company_id
+msgid "Company"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_pos_config__prsq_location_scope
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_res_config_settings__pos_prsq_location_scope
+msgid "Compute Stock From"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model,name:pos_restrict_stock_quantity.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard__create_uid
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard_line__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard__create_date
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard_line__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,help:pos_restrict_stock_quantity.field_prsq_exemption_wizard_line__uom_id
+msgid "Default unit of measure used for all stock operations."
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,help:pos_restrict_stock_quantity.field_pos_config__prsq_warehouse_id
+#: model:ir.model.fields,help:pos_restrict_stock_quantity.field_res_config_settings__pos_prsq_warehouse_id
+msgid "Defaults to the warehouse of the POS Operation Type."
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.prsq_exemption_wizard_view_form
+msgid "Deselect All"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard__display_name
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard_line__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,help:pos_restrict_stock_quantity.field_pos_config__prsq_show_stock
+#: model:ir.model.fields,help:pos_restrict_stock_quantity.field_res_config_settings__pos_prsq_show_stock
+msgid ""
+"Display a green (in stock) or red (out of stock) on-hand quantity badge on "
+"every storable product card."
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.pos_config_view_form_inherit_prsq
+msgid "Do not sell more than the available quantity"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#. odoo-javascript
+#: code:addons/pos_restrict_stock_quantity/static/src/js/models.js:0
+#, python-format
+msgid "Do you want to sell it anyway?"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.prsq_exemption_wizard_view_form
+msgid "Done"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
+msgid "Effective Location"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_pos_config__prsq_stock_location_id
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard__stock_location_id
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_res_config_settings__pos_prsq_stock_location_id
+msgid "Effective Stock Location"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.prsq_exemption_wizard_view_form
+msgid "Exempt All Matching"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.prsq_exemption_wizard_view_form
+msgid "Exempt Selected"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.prsq_exemption_wizard_view_form
+msgid ""
+"Exempt every product matching the filters (not only the displayed lines)?"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#. odoo-javascript
+#: code:addons/pos_restrict_stock_quantity/static/src/xml/ProductItem.xml:0
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard_line__is_exempt
+#, python-format
+msgid "Exempted"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_pos_config__prsq_exempt_product_ids
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_res_config_settings__pos_prsq_exempt_product_ids
+msgid "Exempted Products"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#. odoo-python
+#: code:addons/pos_restrict_stock_quantity/models/pos_config.py:0
+#, python-format
+msgid "Exempted Products - %s"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_pos_config__prsq_exempt_count
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard__exempt_count
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_res_config_settings__pos_prsq_exempt_count
+msgid "Exempted Products Count"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#. odoo-javascript
+#: code:addons/pos_restrict_stock_quantity/static/src/xml/ProductItem.xml:0
+#, python-format
+msgid "Exempted from the stock restriction"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
+msgid "Exempted products..."
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard__exemption_state
+msgid "Exemption Status"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.prsq_exemption_wizard_view_form
+msgid "Filters"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#. odoo-javascript
+#: code:addons/pos_restrict_stock_quantity/static/src/xml/ProductItem.xml:0
+#: code:addons/pos_restrict_stock_quantity/static/src/xml/ProductItem.xml:0
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard_line__forecast
+#, python-format
+msgid "Forecasted"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields.selection,name:pos_restrict_stock_quantity.selection__pos_config__prsq_restriction_basis__forecast
+msgid "Forecasted Quantity"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.pos_config_view_form_inherit_prsq
+msgid "Green / red on-hand badge on POS product cards"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard__id
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard_line__id
+msgid "ID"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields.selection,name:pos_restrict_stock_quantity.selection__prsq_exemption_wizard__stock_state__available
+msgid "In Stock (> 0)"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#. odoo-javascript
+#: code:addons/pos_restrict_stock_quantity/static/src/js/PaymentScreen.js:0
+#: code:addons/pos_restrict_stock_quantity/static/src/js/models.js:0
+#, python-format
+msgid "Insufficient Stock"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard_line__default_code
+msgid "Internal Reference"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.prsq_exemption_wizard_view_form
+msgid "Invert"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard____last_update
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard_line____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard__write_uid
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard_line__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard__write_date
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard_line__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
+msgid "Location"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,help:pos_restrict_stock_quantity.field_pos_config__prsq_stock_location_id
+#: model:ir.model.fields,help:pos_restrict_stock_quantity.field_prsq_exemption_wizard__stock_location_id
+#: model:ir.model.fields,help:pos_restrict_stock_quantity.field_res_config_settings__pos_prsq_stock_location_id
+msgid "Location (with its children) used to compute POS quantities."
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
+msgid ""
+"Location used to compute quantities for this POS\n"
+"                                (linked to its Operation Type and Warehouse)"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.pos_config_view_form_inherit_prsq
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
+msgid "Manage Exempted Products"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard__result_count
+msgid "Matching Products"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard__limit
+msgid "Max Lines Displayed"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard__search_text
+msgid "Name / Reference / Barcode"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields.selection,name:pos_restrict_stock_quantity.selection__prsq_exemption_wizard__stock_state__negative
+msgid "Negative Stock (< 0)"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields.selection,name:pos_restrict_stock_quantity.selection__prsq_exemption_wizard__exemption_state__not_exempt
+msgid "Not Exempted"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#. odoo-javascript
+#: code:addons/pos_restrict_stock_quantity/static/src/xml/ProductItem.xml:0
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard_line__on_hand
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.prsq_exemption_wizard_view_form
+#, python-format
+msgid "On Hand"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields.selection,name:pos_restrict_stock_quantity.selection__pos_config__prsq_restriction_basis__on_hand
+msgid "On Hand Quantity"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
+msgid "On Shortage"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#. odoo-javascript
+#: code:addons/pos_restrict_stock_quantity/static/src/js/models.js:0
+#, python-format
+msgid "Only %s of \"%s\" available in %s."
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields.selection,name:pos_restrict_stock_quantity.selection__pos_config__prsq_location_scope__picking_type
+msgid "Operation Type Source Location"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,help:pos_restrict_stock_quantity.field_pos_config__prsq_location_scope
+#: model:ir.model.fields,help:pos_restrict_stock_quantity.field_res_config_settings__pos_prsq_location_scope
+msgid ""
+"Operation Type Source Location: the default source location of the POS Operation Type (and its children).\n"
+"Whole Warehouse: every internal location of the warehouse.\n"
+"Specific Location: a location you choose (and its children)."
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#. odoo-javascript
+#: code:addons/pos_restrict_stock_quantity/static/src/js/models.js:0
+#, python-format
+msgid "Out of Stock"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields.selection,name:pos_restrict_stock_quantity.selection__prsq_exemption_wizard__stock_state__out
+msgid "Out of Stock (<= 0)"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#. odoo-javascript
+#: code:addons/pos_restrict_stock_quantity/static/src/xml/ProductItem.xml:0
+#, python-format
+msgid "Out of stock"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard__pos_categ_ids
+msgid "POS Categories"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model,name:pos_restrict_stock_quantity.model_prsq_exemption_wizard_line
+msgid "POS Stock Restriction - Exemption Candidate"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model,name:pos_restrict_stock_quantity.model_prsq_exemption_wizard
+msgid "POS Stock Restriction - Product Exemptions"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#. odoo-javascript
+#: code:addons/pos_restrict_stock_quantity/static/src/js/PaymentScreen.js:0
+#, python-format
+msgid "Please adjust the quantities before validating the order."
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#. odoo-python
+#: code:addons/pos_restrict_stock_quantity/models/pos_config.py:0
+#, python-format
+msgid "Please select the stock location used by the Point of Sale \"%s\"."
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#. odoo-python
+#: code:addons/pos_restrict_stock_quantity/models/pos_config.py:0
+#, python-format
+msgid "Please select the warehouse used by the Point of Sale \"%s\"."
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard__config_id
+msgid "Point of Sale"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model,name:pos_restrict_stock_quantity.model_pos_config
+msgid "Point of Sale Configuration"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model,name:pos_restrict_stock_quantity.model_pos_session
+msgid "Point of Sale Session"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,help:pos_restrict_stock_quantity.field_pos_config__prsq_restrict_out_of_stock
+#: model:ir.model.fields,help:pos_restrict_stock_quantity.field_res_config_settings__pos_prsq_restrict_out_of_stock
+msgid ""
+"Prevent cashiers from selling more than the available quantity of storable "
+"products."
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard_line__product_id
+msgid "Product"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard__categ_ids
+msgid "Product Categories"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard_line__categ_id
+msgid "Product Category"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard__tag_ids
+msgid "Product Tags"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard__line_ids
+msgid "Products"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
+msgid ""
+"Quantities are embedded when the POS loads and refreshed after each synced order.\n"
+"                                Optionally reload them every N minutes (0 = off)."
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#. odoo-javascript
+#: code:addons/pos_restrict_stock_quantity/static/src/xml/RefreshStockButton.xml:0
+#: code:addons/pos_restrict_stock_quantity/static/src/xml/RefreshStockButton.xml:0
+#: code:addons/pos_restrict_stock_quantity/static/src/xml/RefreshStockButton.xml:0
+#, python-format
+msgid "Refresh Stock"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,help:pos_restrict_stock_quantity.field_pos_config__prsq_refresh_interval
+#: model:ir.model.fields,help:pos_restrict_stock_quantity.field_res_config_settings__pos_prsq_refresh_interval
+msgid ""
+"Reload stock quantities in the background every N minutes while the POS is "
+"open. 0 disables the periodic refresh (quantities are still refreshed after "
+"each synced order)."
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.prsq_exemption_wizard_view_form
+msgid "Remove Exemption"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.prsq_exemption_wizard_view_form
+msgid "Remove all product exemptions of this Point of Sale?"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.prsq_exemption_wizard_view_form
+msgid "Remove the exemption of every product matching the filters?"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#. odoo-javascript
+#: code:addons/pos_restrict_stock_quantity/static/src/js/models.js:0
+#, python-format
+msgid "Requested quantity: %s."
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.prsq_exemption_wizard_view_form
+msgid "Reset"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_pos_config__prsq_restrict_out_of_stock
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_res_config_settings__pos_prsq_restrict_out_of_stock
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
+msgid "Restrict Out-of-Stock Sales"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.prsq_exemption_wizard_view_form
+msgid "Search Products"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard__searched
+msgid "Searched"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard_line__selected
+msgid "Select"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.prsq_exemption_wizard_view_form
+msgid "Select All"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard__selected_count
+msgid "Selected Count"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#. odoo-javascript
+#: code:addons/pos_restrict_stock_quantity/static/src/js/models.js:0
+#, python-format
+msgid "Sell Anyway"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_pos_config__prsq_show_forecast
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_res_config_settings__pos_prsq_show_forecast
+msgid "Show Forecasted Quantity"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_pos_config__prsq_show_stock
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_res_config_settings__pos_prsq_show_stock
+msgid "Show Stock on Products"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
+msgid ""
+"Show the on-hand quantity on product cards:\n"
+"                                <span class=\"badge rounded-pill text-bg-success\">in stock</span>\n"
+"                                <span class=\"badge rounded-pill text-bg-danger\">out of stock</span>"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields.selection,name:pos_restrict_stock_quantity.selection__pos_config__prsq_location_scope__location
+msgid "Specific Location"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
+msgid "Stock Auto Refresh"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
+msgid "Stock Badges on Products"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard__stock_state
+msgid "Stock Level"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_pos_config__prsq_location_id
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_res_config_settings__pos_prsq_location_id
+msgid "Stock Location"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#. odoo-javascript
+#: code:addons/pos_restrict_stock_quantity/static/src/js/RefreshStockButton.js:0
+#, python-format
+msgid "Stock Refresh Failed"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#. odoo-python
+#: code:addons/pos_restrict_stock_quantity/wizard/prsq_exemption_wizard.py:0
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.prsq_exemption_wizard_view_form
+#, python-format
+msgid "Stock Restriction Exemptions"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
+msgid "Stock Source"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.pos_config_view_form_inherit_prsq
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
+msgid "Stock Visibility &amp; Restriction"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_pos_config__prsq_warehouse_id
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_res_config_settings__pos_prsq_warehouse_id
+msgid "Stock Warehouse"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#. odoo-javascript
+#: code:addons/pos_restrict_stock_quantity/static/src/js/RefreshStockButton.js:0
+#, python-format
+msgid "Stock quantities could not be refreshed. Please check your connection."
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#. odoo-javascript
+#: code:addons/pos_restrict_stock_quantity/static/src/js/RefreshStockButton.js:0
+#, python-format
+msgid "Stock quantities updated."
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#. odoo-python
+#: code:addons/pos_restrict_stock_quantity/models/pos_config.py:0
+#, python-format
+msgid "The stock auto refresh interval cannot be negative."
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,help:pos_restrict_stock_quantity.field_pos_config__prsq_exempt_product_ids
+#: model:ir.model.fields,help:pos_restrict_stock_quantity.field_res_config_settings__pos_prsq_exempt_product_ids
+msgid "These products can always be sold, whatever their stock level."
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#. odoo-javascript
+#: code:addons/pos_restrict_stock_quantity/static/src/js/models.js:0
+#, python-format
+msgid "This product cannot be sold beyond its available quantity."
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.prsq_exemption_wizard_view_form
+msgid "Un-exempt All Matching"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard_line__uom_id
+msgid "Unit of Measure"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
+msgid "Warehouse"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields.selection,name:pos_restrict_stock_quantity.selection__pos_config__prsq_restriction_mode__warn
+msgid "Warn and allow override"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_pos_config__prsq_restriction_mode
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_res_config_settings__pos_prsq_restriction_mode
+msgid "When Stock Is Insufficient"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.pos_config_view_form_inherit_prsq
+msgid "Where POS quantities are computed (Operation Type:"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields.selection,name:pos_restrict_stock_quantity.selection__pos_config__prsq_location_scope__warehouse
+msgid "Whole Warehouse"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard_line__wizard_id
+msgid "Wizard"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.prsq_exemption_wizard_view_form
+msgid "e.g. Coca, FURN_001, 5449..."
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.prsq_exemption_wizard_view_form
+msgid "matching product(s),"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.pos_config_view_form_inherit_prsq
+msgid "min"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
+msgid "minutes"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.prsq_exemption_wizard_view_form
+msgid "selected"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#. odoo-javascript
+#: code:addons/pos_restrict_stock_quantity/static/src/js/models.js:0
+#, python-format
+msgid "this location"
+msgstr ""
