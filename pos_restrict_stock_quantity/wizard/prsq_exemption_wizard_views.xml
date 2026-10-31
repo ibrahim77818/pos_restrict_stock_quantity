@@ -45,7 +45,7 @@
                             string="Un-exempt All Matching" class="btn-secondary" icon="fa-lock"
                             confirm="Remove the exemption of every product matching the filters?"/>
                 </div>
-                <div attrs="{'invisible': [('searched', '=', False)]}">
+                <div invisible="not searched">
                     <div class="d-flex flex-wrap align-items-center gap-1 mb-2">
                         <span class="me-2">
                             <strong><field name="result_count" class="d-inline"/></strong> matching product(s),
@@ -60,13 +60,13 @@
                         <span class="flex-grow-1"/>
                         <button name="action_exempt_selected" type="object" string="Exempt Selected"
                                 class="btn-primary" icon="fa-unlock"
-                                attrs="{'invisible': [('selected_count', '=', 0)]}"/>
+                                invisible="selected_count == 0"/>
                         <button name="action_unexempt_selected" type="object" string="Remove Exemption"
                                 class="btn-secondary" icon="fa-lock"
-                                attrs="{'invisible': [('selected_count', '=', 0)]}"/>
+                                invisible="selected_count == 0"/>
                     </div>
                     <field name="line_ids" nolabel="1">
-                        <tree editable="bottom" create="0" delete="0"
+                        <list editable="bottom" create="0" delete="0"
                               decoration-muted="is_exempt"
                               decoration-danger="not is_exempt and on_hand &lt;= 0"
                               decoration-success="not is_exempt and on_hand &gt; 0">
@@ -78,7 +78,7 @@
                             <field name="forecast" optional="show"/>
                             <field name="uom_id" optional="hide" groups="uom.group_uom"/>
                             <field name="is_exempt" widget="boolean_toggle" readonly="1"/>
-                        </tree>
+                        </list>
                     </field>
                 </div>
                 <footer>

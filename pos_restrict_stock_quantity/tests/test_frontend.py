@@ -8,16 +8,16 @@ from odoo.addons.point_of_sale.tests.test_frontend import TestPointOfSaleHttpCom
 class TestPrsqUi(TestPointOfSaleHttpCommon):
 
     @classmethod
-    def setUpClass(cls, chart_template_ref=None):
-        super().setUpClass(chart_template_ref=chart_template_ref)
+    def setUpClass(cls):
+        super().setUpClass()
         env = cls.env
         config = cls.main_pos_config
         location = config.picking_type_id.default_location_src_id
 
-        def product(name, detailed_type='product'):
+        def product(name, storable=True):
             return env['product.product'].create({
                 'name': name,
-                'detailed_type': detailed_type,
+                'is_storable': storable,
                 'available_in_pos': True,
                 'list_price': 10.0,
                 'taxes_id': [(5, 0, 0)],
@@ -26,7 +26,7 @@ class TestPrsqUi(TestPointOfSaleHttpCommon):
         cls.apple = product('PRSQ Apple')      # 2 in stock
         cls.banana = product('PRSQ Banana')    # out of stock, 5 incoming
         cls.cherry = product('PRSQ Cherry')    # out of stock, exempted
-        cls.water = product('PRSQ Water', 'consu')
+        cls.water = product('PRSQ Water', storable=False)
         env['stock.quant']._update_available_quantity(cls.apple, location, 2)
         move = env['stock.move'].create({
             'name': 'PRSQ incoming banana',
@@ -49,9 +49,9 @@ class TestPrsqUi(TestPointOfSaleHttpCommon):
 
     def test_01_block_mode_tour(self):
         self.main_pos_config.prsq_restriction_mode = 'block'
-        self.main_pos_config.open_ui()
+        self.main_pos_config.with_user(self.pos_user).open_ui()
         self.start_tour('/pos/ui?config_id=%d' % self.main_pos_config.id,
-                        'PosRestrictStockBlockTour', login='accountman')
+                        'PosRestrictStockBlockTour', login='pos_user')
         order = self.env['pos.order'].search([('session_id', '=', self.main_pos_config.current_session_id.id)])
         self.assertEqual(len(order), 1)
         quantities = {line.product_id: line.qty for line in order.lines}
@@ -61,6 +61,6 @@ class TestPrsqUi(TestPointOfSaleHttpCommon):
 
     def test_02_warn_mode_tour(self):
         self.main_pos_config.prsq_restriction_mode = 'warn'
-        self.main_pos_config.open_ui()
+        self.main_pos_config.with_user(self.pos_user).open_ui()
         self.start_tour('/pos/ui?config_id=%d' % self.main_pos_config.id,
-                        'PosRestrictStockWarnTour', login='accountman')
+                        'PosRestrictStockWarnTour', login='pos_user')

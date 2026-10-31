@@ -54,7 +54,7 @@ class PrsqExemptionWizard(models.TransientModel):
     def _get_product_domain(self):
         self.ensure_one()
         domain = [
-            ('type', '=', 'product'),
+            ('is_storable', '=', True),
             ('company_id', 'in', (self.config_id.company_id.id, False)),
         ]
         if self.available_in_pos_only:
@@ -67,7 +67,7 @@ class PrsqExemptionWizard(models.TransientModel):
         if self.categ_ids:
             domain.append(('categ_id', 'child_of', self.categ_ids.ids))
         if self.pos_categ_ids:
-            domain.append(('pos_categ_id', 'child_of', self.pos_categ_ids.ids))
+            domain.append(('pos_categ_ids', 'child_of', self.pos_categ_ids.ids))
         if self.tag_ids:
             domain.append(('product_tag_ids', 'in', self.tag_ids.ids))
         exempt_ids = self.config_id.prsq_exempt_product_ids.ids

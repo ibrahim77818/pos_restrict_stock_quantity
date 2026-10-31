@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <!-- Odoo 18 keeps secondary actions in the "Actions" dialog -->
+    <t t-name="pos_restrict_stock_quantity.ControlButtons" t-inherit="point_of_sale.ControlButtons" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('control-buttons-modal')]" position="inside">
+            <button t-if="prsqShowRefresh" class="btn btn-secondary btn-lg py-5 prsq-refresh-button"
+                    t-att-disabled="pos.prsqRefreshing" t-on-click="() => this.prsqClickRefreshStock()">
+                <i class="fa fa-refresh me-1" t-att-class="{'fa-spin': pos.prsqRefreshing}" role="img"
+                   aria-label="Refresh Stock" title="Refresh Stock"/>
+                Refresh Stock
+            </button>
+        </xpath>
+    </t>
+
+</templates>

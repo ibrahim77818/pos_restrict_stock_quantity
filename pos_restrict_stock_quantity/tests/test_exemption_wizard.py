@@ -127,3 +127,13 @@ class TestPrsqExemptionWizard(PrsqCommon):
         wizard.action_exempt_all_matching()
         self.assertEqual(self.config.prsq_exempt_product_ids, self.cola)
         self.assertFalse(other.prsq_exempt_product_ids)
+
+    def test_11_pos_category_filter_includes_children(self):
+        """v17: products carry several POS categories (pos_categ_ids)."""
+        parent = self.env['pos.category'].create({'name': 'PRSQ POS Drinks'})
+        child = self.env['pos.category'].create({'name': 'PRSQ POS Soda', 'parent_id': parent.id})
+        self.cola.pos_categ_ids = [(6, 0, child.ids)]
+        self.juice.pos_categ_ids = [(6, 0, parent.ids)]
+        wizard = self._wizard(pos_categ_ids=[(6, 0, parent.ids)])
+        wizard.action_search()
+        self.assertEqual(set(wizard.line_ids.product_id.ids), {self.cola.id, self.juice.id})

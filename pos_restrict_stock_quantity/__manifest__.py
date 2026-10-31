@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'POS Restrict Stock Quantity',
-    'version': '16.0.1.0.0',
+    'version': '18.0.1.0.0',
     'summary': 'Real-time stock badges on POS products, per-POS out-of-stock '
                'restriction, warehouse / operation type mapping and bulk '
                'product exemptions.',
@@ -33,11 +33,8 @@ POS Restrict Stock Quantity
         'views/res_config_settings_views.xml',
     ],
     'assets': {
-        'point_of_sale.assets': [
-            'pos_restrict_stock_quantity/static/src/js/**/*.js',
-            'pos_restrict_stock_quantity/static/src/xml/**/*.xml',
-            ('after', 'point_of_sale/static/src/scss/pos.scss',
-             'pos_restrict_stock_quantity/static/src/scss/pos_restrict_stock.scss'),
+        'point_of_sale._assets_pos': [
+            'pos_restrict_stock_quantity/static/src/app/**/*',
         ],
         'web.assets_tests': [
             'pos_restrict_stock_quantity/static/tests/tours/**/*',

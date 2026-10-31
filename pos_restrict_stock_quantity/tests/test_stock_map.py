@@ -10,8 +10,8 @@ class PrsqCommon(TestPoSCommon):
     internal location outside WH/Stock (still inside the warehouse)."""
 
     @classmethod
-    def setUpClass(cls, chart_template_ref=None):
-        super().setUpClass(chart_template_ref=chart_template_ref)
+    def setUpClass(cls):
+        super().setUpClass()
         cls.warehouse = cls.company_data['default_warehouse']
         cls.wh_stock = cls.warehouse.lot_stock_id
         cls.shelf = cls.env['stock.location'].create({
@@ -33,7 +33,7 @@ class PrsqCommon(TestPoSCommon):
         self.storable = self.create_product('PRSQ Storable', self.categ_basic, 10.0, 5.0)
         self.storable_2 = self.create_product('PRSQ Storable 2', self.categ_basic, 12.0, 5.0)
         self.consumable = self.create_product('PRSQ Consumable', self.categ_basic, 3.0)
-        self.consumable.type = 'consu'
+        self.consumable.is_storable = False
 
     def _set_qty(self, product, location, qty):
         self.env['stock.quant']._update_available_quantity(product, location, qty)
@@ -54,7 +54,6 @@ class PrsqCommon(TestPoSCommon):
         return self.env['pos.config'].create({
             'name': name,
             'invoice_journal_id': self.invoice_journal.id,
-            'journal_id': self.pos_sale_journal.id,
             'available_pricelist_ids': self.currency_pricelist.ids,
             'pricelist_id': self.currency_pricelist.id,
             'picking_type_id': self.warehouse.pos_type_id.id,
@@ -126,7 +125,7 @@ class TestPrsqStockMap(PrsqCommon):
         self._set_qty(self.storable, self.wh_stock, 10)
         session = self.open_new_session()
         self.assertTrue(session.update_stock_at_closing)
-        self.env['pos.order'].create_from_ui([
+        self.env['pos.order'].sync_from_ui([
             self.create_ui_order_data([(self.storable, 3)]),
             self.create_ui_order_data([(self.storable, 1), (self.consumable, 2)]),
         ])
@@ -143,7 +142,7 @@ class TestPrsqStockMap(PrsqCommon):
         self._set_qty(self.storable, self.wh_stock, 10)
         session = self.open_new_session()
         self.assertFalse(session.update_stock_at_closing)
-        self.env['pos.order'].create_from_ui([self.create_ui_order_data([(self.storable, 4)])])
+        self.env['pos.order'].sync_from_ui([self.create_ui_order_data([(self.storable, 4)])])
         self.assertTrue(session.order_ids.picking_ids)
         self.assertEqual(self.config._prsq_compute_stock_map([self.storable.id])[self.storable.id], [6.0, 6.0])
 
@@ -154,7 +153,7 @@ class TestPrsqStockMap(PrsqCommon):
         self._set_qty(self.storable, self.wh_stock, 10)
         self.config = self._new_config('PRSQ Second Terminal')
         self.open_new_session()
-        self.env['pos.order'].create_from_ui([
+        self.env['pos.order'].sync_from_ui([
             self.create_ui_order_data([(self.storable, 2)], payments=[(self.bank_pm1, 20.0)])])
         self.assertEqual(self.basic_config._prsq_compute_stock_map([self.storable.id])[self.storable.id][0], 8.0)
 
@@ -165,9 +164,10 @@ class TestPrsqStockMap(PrsqCommon):
         self._set_qty(self.storable, self.wh_stock, 5)
         self.config.prsq_exempt_product_ids = [(6, 0, self.storable_2.ids)]
         session = self.open_new_session()
-        data = session.load_pos_data()
+        data = session.load_data([])
+        config_vals = data['pos.config']['data'][0]
 
-        settings = data['prsq_settings']
+        settings = config_vals['_prsq_settings']
         self.assertTrue(settings['active'])
         self.assertTrue(settings['restrict'])
         self.assertEqual(settings['basis'], 'on_hand')
@@ -175,29 +175,33 @@ class TestPrsqStockMap(PrsqCommon):
         self.assertEqual(settings['exempt_product_ids'], self.storable_2.ids)
         self.assertEqual(settings['location_name'], self.wh_stock.display_name)
 
-        products = {p['id']: p for p in data['product.product']}
-        self.assertEqual(products[self.storable.id]['prsq_stock'], [5.0, 5.0])
-        self.assertEqual(products[self.storable_2.id]['prsq_stock'], [0.0, 0.0])
-        self.assertIs(products[self.consumable.id]['prsq_stock'], False)
+        # The map covers every product sent to the POS (v18: on pos.config)
+        stock_map = config_vals['_prsq_stock_map']
+        loaded_ids = {p['id'] for p in data['product.product']['data']}
+        self.assertEqual(set(stock_map), {str(pid) for pid in loaded_ids})
+        self.assertEqual(stock_map[str(self.storable.id)], [5.0, 5.0])
+        self.assertEqual(stock_map[str(self.storable_2.id)], [0.0, 0.0])
+        self.assertIs(stock_map[str(self.consumable.id)], False)
 
-        # Products loaded later (search / barcode / background) carry it too
-        later = session.get_pos_ui_product_product_by_params({'domain': [('id', '=', self.storable.id)]})
-        self.assertEqual(later[0]['prsq_stock'], [5.0, 5.0])
+        # Products loaded later (search / barcode / local cache) are refreshed
+        result = session.prsq_get_stock_map([self.storable.id])
+        self.assertEqual(result['stock'], {str(self.storable.id): [5.0, 5.0]})
 
     def test_09_inactive_config_skips_computation(self):
         self.config.write({
             'prsq_show_stock': False, 'prsq_show_forecast': False, 'prsq_restrict_out_of_stock': False})
         session = self.open_new_session()
-        data = session.load_pos_data()
-        self.assertFalse(data['prsq_settings']['active'])
-        self.assertTrue(all('prsq_stock' not in p for p in data['product.product']))
+        data = session.load_data([])
+        config_vals = data['pos.config']['data'][0]
+        self.assertFalse(config_vals['_prsq_settings']['active'])
+        self.assertNotIn('_prsq_stock_map', config_vals)
         self.assertEqual(session.prsq_get_stock_map([self.storable.id])['stock'], {})
 
     def test_10_refresh_endpoint(self):
         self._set_qty(self.storable, self.wh_stock, 9)
         session = self.open_new_session()
         result = session.prsq_get_stock_map([self.storable.id, self.consumable.id])
-        self.assertEqual(result['stock'], {str(self.storable.id): [9.0, 9.0]})
+        self.assertEqual(result['stock'], {str(self.storable.id): [9.0, 9.0], str(self.consumable.id): False})
         self.assertTrue(result['server_time'])
 
     def test_11_pos_user_can_refresh(self):

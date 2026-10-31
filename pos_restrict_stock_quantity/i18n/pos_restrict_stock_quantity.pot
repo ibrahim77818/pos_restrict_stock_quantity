@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0\n"
+"Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-28 07:28+0000\n"
-"PO-Revision-Date: 2026-10-28 07:28+0000\n"
+"POT-Creation-Date: 2026-10-31 09:25+0000\n"
+"PO-Revision-Date: 2026-10-31 09:25+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -17,8 +17,7 @@ msgstr ""
 
 #. module: pos_restrict_stock_quantity
 #. odoo-javascript
-#: code:addons/pos_restrict_stock_quantity/static/src/js/models.js:0
-#, python-format
+#: code:addons/pos_restrict_stock_quantity/static/src/app/pos_store_patch.js:0
 msgid "\"%s\" is out of stock in %s."
 msgstr ""
 
@@ -45,6 +44,13 @@ msgstr ""
 #. module: pos_restrict_stock_quantity
 #: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
 msgid "<span class=\"badge rounded-pill text-bg-primary ms-1\">forecast</span>"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
+msgid ""
+"<span class=\"badge rounded-pill text-bg-success\">in stock</span>\n"
+"                            <span class=\"badge rounded-pill text-bg-danger ms-1\">out of stock</span>"
 msgstr ""
 
 #. module: pos_restrict_stock_quantity
@@ -76,6 +82,7 @@ msgstr ""
 #. module: pos_restrict_stock_quantity
 #: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_pos_config__prsq_refresh_interval
 #: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_res_config_settings__pos_prsq_refresh_interval
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.pos_config_view_form_inherit_prsq
 msgid "Auto Refresh (minutes)"
 msgstr ""
 
@@ -107,8 +114,7 @@ msgstr ""
 
 #. module: pos_restrict_stock_quantity
 #. odoo-javascript
-#: code:addons/pos_restrict_stock_quantity/static/src/js/models.js:0
-#, python-format
+#: code:addons/pos_restrict_stock_quantity/static/src/app/pos_store_patch.js:0
 msgid "Cancel"
 msgstr ""
 
@@ -137,6 +143,7 @@ msgstr ""
 #. module: pos_restrict_stock_quantity
 #: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_pos_config__prsq_location_scope
 #: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_res_config_settings__pos_prsq_location_scope
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.pos_config_view_form_inherit_prsq
 msgid "Compute Stock From"
 msgstr ""
 
@@ -194,8 +201,7 @@ msgstr ""
 
 #. module: pos_restrict_stock_quantity
 #. odoo-javascript
-#: code:addons/pos_restrict_stock_quantity/static/src/js/models.js:0
-#, python-format
+#: code:addons/pos_restrict_stock_quantity/static/src/app/pos_store_patch.js:0
 msgid "Do you want to sell it anyway?"
 msgstr ""
 
@@ -234,9 +240,8 @@ msgstr ""
 
 #. module: pos_restrict_stock_quantity
 #. odoo-javascript
-#: code:addons/pos_restrict_stock_quantity/static/src/xml/ProductItem.xml:0
+#: code:addons/pos_restrict_stock_quantity/static/src/app/product_card_patch.xml:0
 #: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard_line__is_exempt
-#, python-format
 msgid "Exempted"
 msgstr ""
 
@@ -249,7 +254,6 @@ msgstr ""
 #. module: pos_restrict_stock_quantity
 #. odoo-python
 #: code:addons/pos_restrict_stock_quantity/models/pos_config.py:0
-#, python-format
 msgid "Exempted Products - %s"
 msgstr ""
 
@@ -262,8 +266,7 @@ msgstr ""
 
 #. module: pos_restrict_stock_quantity
 #. odoo-javascript
-#: code:addons/pos_restrict_stock_quantity/static/src/xml/ProductItem.xml:0
-#, python-format
+#: code:addons/pos_restrict_stock_quantity/static/src/app/product_card_patch.xml:0
 msgid "Exempted from the stock restriction"
 msgstr ""
 
@@ -284,10 +287,8 @@ msgstr ""
 
 #. module: pos_restrict_stock_quantity
 #. odoo-javascript
-#: code:addons/pos_restrict_stock_quantity/static/src/xml/ProductItem.xml:0
-#: code:addons/pos_restrict_stock_quantity/static/src/xml/ProductItem.xml:0
+#: code:addons/pos_restrict_stock_quantity/static/src/app/product_card_patch.xml:0
 #: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard_line__forecast
-#, python-format
 msgid "Forecasted"
 msgstr ""
 
@@ -314,9 +315,8 @@ msgstr ""
 
 #. module: pos_restrict_stock_quantity
 #. odoo-javascript
-#: code:addons/pos_restrict_stock_quantity/static/src/js/PaymentScreen.js:0
-#: code:addons/pos_restrict_stock_quantity/static/src/js/models.js:0
-#, python-format
+#: code:addons/pos_restrict_stock_quantity/static/src/app/payment_screen_patch.js:0
+#: code:addons/pos_restrict_stock_quantity/static/src/app/pos_store_patch.js:0
 msgid "Insufficient Stock"
 msgstr ""
 
@@ -328,12 +328,6 @@ msgstr ""
 #. module: pos_restrict_stock_quantity
 #: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.prsq_exemption_wizard_view_form
 msgid "Invert"
-msgstr ""
-
-#. module: pos_restrict_stock_quantity
-#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard____last_update
-#: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard_line____last_update
-msgid "Last Modified on"
 msgstr ""
 
 #. module: pos_restrict_stock_quantity
@@ -363,8 +357,8 @@ msgstr ""
 #. module: pos_restrict_stock_quantity
 #: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
 msgid ""
-"Location used to compute quantities for this POS\n"
-"                                (linked to its Operation Type and Warehouse)"
+"Location used to compute quantities for this POS (linked to its Operation "
+"Type and Warehouse)"
 msgstr ""
 
 #. module: pos_restrict_stock_quantity
@@ -400,10 +394,9 @@ msgstr ""
 
 #. module: pos_restrict_stock_quantity
 #. odoo-javascript
-#: code:addons/pos_restrict_stock_quantity/static/src/xml/ProductItem.xml:0
+#: code:addons/pos_restrict_stock_quantity/static/src/app/product_card_patch.xml:0
 #: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard_line__on_hand
 #: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.prsq_exemption_wizard_view_form
-#, python-format
 msgid "On Hand"
 msgstr ""
 
@@ -419,8 +412,7 @@ msgstr ""
 
 #. module: pos_restrict_stock_quantity
 #. odoo-javascript
-#: code:addons/pos_restrict_stock_quantity/static/src/js/models.js:0
-#, python-format
+#: code:addons/pos_restrict_stock_quantity/static/src/app/pos_store_patch.js:0
 msgid "Only %s of \"%s\" available in %s."
 msgstr ""
 
@@ -439,9 +431,13 @@ msgid ""
 msgstr ""
 
 #. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.pos_config_view_form_inherit_prsq
+msgid "Operation Type:"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
 #. odoo-javascript
-#: code:addons/pos_restrict_stock_quantity/static/src/js/models.js:0
-#, python-format
+#: code:addons/pos_restrict_stock_quantity/static/src/app/pos_store_patch.js:0
 msgid "Out of Stock"
 msgstr ""
 
@@ -452,8 +448,7 @@ msgstr ""
 
 #. module: pos_restrict_stock_quantity
 #. odoo-javascript
-#: code:addons/pos_restrict_stock_quantity/static/src/xml/ProductItem.xml:0
-#, python-format
+#: code:addons/pos_restrict_stock_quantity/static/src/app/product_card_patch.xml:0
 msgid "Out of stock"
 msgstr ""
 
@@ -474,22 +469,19 @@ msgstr ""
 
 #. module: pos_restrict_stock_quantity
 #. odoo-javascript
-#: code:addons/pos_restrict_stock_quantity/static/src/js/PaymentScreen.js:0
-#, python-format
+#: code:addons/pos_restrict_stock_quantity/static/src/app/payment_screen_patch.js:0
 msgid "Please adjust the quantities before validating the order."
 msgstr ""
 
 #. module: pos_restrict_stock_quantity
 #. odoo-python
 #: code:addons/pos_restrict_stock_quantity/models/pos_config.py:0
-#, python-format
 msgid "Please select the stock location used by the Point of Sale \"%s\"."
 msgstr ""
 
 #. module: pos_restrict_stock_quantity
 #. odoo-python
 #: code:addons/pos_restrict_stock_quantity/models/pos_config.py:0
-#, python-format
 msgid "Please select the warehouse used by the Point of Sale \"%s\"."
 msgstr ""
 
@@ -537,6 +529,11 @@ msgid "Product Tags"
 msgstr ""
 
 #. module: pos_restrict_stock_quantity
+#: model:ir.model,name:pos_restrict_stock_quantity.model_product_product
+msgid "Product Variant"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
 #: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_prsq_exemption_wizard__line_ids
 msgid "Products"
 msgstr ""
@@ -544,16 +541,13 @@ msgstr ""
 #. module: pos_restrict_stock_quantity
 #: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
 msgid ""
-"Quantities are embedded when the POS loads and refreshed after each synced order.\n"
-"                                Optionally reload them every N minutes (0 = off)."
+"Quantities are embedded when the POS loads and refreshed after each synced "
+"order. Optionally reload them every N minutes (0 = off)."
 msgstr ""
 
 #. module: pos_restrict_stock_quantity
 #. odoo-javascript
-#: code:addons/pos_restrict_stock_quantity/static/src/xml/RefreshStockButton.xml:0
-#: code:addons/pos_restrict_stock_quantity/static/src/xml/RefreshStockButton.xml:0
-#: code:addons/pos_restrict_stock_quantity/static/src/xml/RefreshStockButton.xml:0
-#, python-format
+#: code:addons/pos_restrict_stock_quantity/static/src/app/control_buttons_patch.xml:0
 msgid "Refresh Stock"
 msgstr ""
 
@@ -583,8 +577,7 @@ msgstr ""
 
 #. module: pos_restrict_stock_quantity
 #. odoo-javascript
-#: code:addons/pos_restrict_stock_quantity/static/src/js/models.js:0
-#, python-format
+#: code:addons/pos_restrict_stock_quantity/static/src/app/pos_store_patch.js:0
 msgid "Requested quantity: %s."
 msgstr ""
 
@@ -596,6 +589,7 @@ msgstr ""
 #. module: pos_restrict_stock_quantity
 #: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_pos_config__prsq_restrict_out_of_stock
 #: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_res_config_settings__pos_prsq_restrict_out_of_stock
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.pos_config_view_form_inherit_prsq
 #: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
 msgid "Restrict Out-of-Stock Sales"
 msgstr ""
@@ -627,8 +621,7 @@ msgstr ""
 
 #. module: pos_restrict_stock_quantity
 #. odoo-javascript
-#: code:addons/pos_restrict_stock_quantity/static/src/js/models.js:0
-#, python-format
+#: code:addons/pos_restrict_stock_quantity/static/src/app/pos_store_patch.js:0
 msgid "Sell Anyway"
 msgstr ""
 
@@ -641,15 +634,13 @@ msgstr ""
 #. module: pos_restrict_stock_quantity
 #: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_pos_config__prsq_show_stock
 #: model:ir.model.fields,field_description:pos_restrict_stock_quantity.field_res_config_settings__pos_prsq_show_stock
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.pos_config_view_form_inherit_prsq
 msgid "Show Stock on Products"
 msgstr ""
 
 #. module: pos_restrict_stock_quantity
 #: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
-msgid ""
-"Show the on-hand quantity on product cards:\n"
-"                                <span class=\"badge rounded-pill text-bg-success\">in stock</span>\n"
-"                                <span class=\"badge rounded-pill text-bg-danger\">out of stock</span>"
+msgid "Show the on-hand quantity on product cards"
 msgstr ""
 
 #. module: pos_restrict_stock_quantity
@@ -680,8 +671,7 @@ msgstr ""
 
 #. module: pos_restrict_stock_quantity
 #. odoo-javascript
-#: code:addons/pos_restrict_stock_quantity/static/src/js/RefreshStockButton.js:0
-#, python-format
+#: code:addons/pos_restrict_stock_quantity/static/src/app/control_buttons_patch.js:0
 msgid "Stock Refresh Failed"
 msgstr ""
 
@@ -689,7 +679,6 @@ msgstr ""
 #. odoo-python
 #: code:addons/pos_restrict_stock_quantity/wizard/prsq_exemption_wizard.py:0
 #: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.prsq_exemption_wizard_view_form
-#, python-format
 msgid "Stock Restriction Exemptions"
 msgstr ""
 
@@ -699,8 +688,12 @@ msgid "Stock Source"
 msgstr ""
 
 #. module: pos_restrict_stock_quantity
-#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.pos_config_view_form_inherit_prsq
 #: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
+msgid "Stock Visibility & Restriction"
+msgstr ""
+
+#. module: pos_restrict_stock_quantity
+#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.pos_config_view_form_inherit_prsq
 msgid "Stock Visibility &amp; Restriction"
 msgstr ""
 
@@ -712,22 +705,19 @@ msgstr ""
 
 #. module: pos_restrict_stock_quantity
 #. odoo-javascript
-#: code:addons/pos_restrict_stock_quantity/static/src/js/RefreshStockButton.js:0
-#, python-format
+#: code:addons/pos_restrict_stock_quantity/static/src/app/control_buttons_patch.js:0
 msgid "Stock quantities could not be refreshed. Please check your connection."
 msgstr ""
 
 #. module: pos_restrict_stock_quantity
 #. odoo-javascript
-#: code:addons/pos_restrict_stock_quantity/static/src/js/RefreshStockButton.js:0
-#, python-format
+#: code:addons/pos_restrict_stock_quantity/static/src/app/control_buttons_patch.js:0
 msgid "Stock quantities updated."
 msgstr ""
 
 #. module: pos_restrict_stock_quantity
 #. odoo-python
 #: code:addons/pos_restrict_stock_quantity/models/pos_config.py:0
-#, python-format
 msgid "The stock auto refresh interval cannot be negative."
 msgstr ""
 
@@ -739,8 +729,7 @@ msgstr ""
 
 #. module: pos_restrict_stock_quantity
 #. odoo-javascript
-#: code:addons/pos_restrict_stock_quantity/static/src/js/models.js:0
-#, python-format
+#: code:addons/pos_restrict_stock_quantity/static/src/app/pos_store_patch.js:0
 msgid "This product cannot be sold beyond its available quantity."
 msgstr ""
 
@@ -772,7 +761,7 @@ msgstr ""
 
 #. module: pos_restrict_stock_quantity
 #: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.pos_config_view_form_inherit_prsq
-msgid "Where POS quantities are computed (Operation Type:"
+msgid "Where POS quantities are computed"
 msgstr ""
 
 #. module: pos_restrict_stock_quantity
@@ -796,11 +785,6 @@ msgid "matching product(s),"
 msgstr ""
 
 #. module: pos_restrict_stock_quantity
-#: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.pos_config_view_form_inherit_prsq
-msgid "min"
-msgstr ""
-
-#. module: pos_restrict_stock_quantity
 #: model_terms:ir.ui.view,arch_db:pos_restrict_stock_quantity.res_config_settings_view_form_inherit_prsq
 msgid "minutes"
 msgstr ""
@@ -812,7 +796,6 @@ msgstr ""
 
 #. module: pos_restrict_stock_quantity
 #. odoo-javascript
-#: code:addons/pos_restrict_stock_quantity/static/src/js/models.js:0
-#, python-format
+#: code:addons/pos_restrict_stock_quantity/static/src/app/pos_store_patch.js:0
 msgid "this location"
 msgstr ""
